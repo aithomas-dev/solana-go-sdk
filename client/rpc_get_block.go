@@ -66,6 +66,8 @@ func (c *Client) GetBlockWithConfig(ctx context.Context, slot uint64, cfg GetBlo
 }
 
 func convertBlock(v *rpc.GetBlock) (*Block, error) {
+	now := time.Now()
+	defer fmt.Println("convert block time: ", time.Since(now))
 	if v == nil {
 		return nil, nil
 	}
